@@ -1,0 +1,14 @@
+{
+	"name": "@laurieherault/libs",
+	"version": "0.0.1",
+	"module": "src/index.ts",
+	"type": "module",
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"author": "Laurie Hérault",
+	"license": "MIT"
+}
