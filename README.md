@@ -1,15 +1,14 @@
-# @laurieherault:libs
+# My libs
 
-To install dependencies:
+This package is a collection of personal libraries and utility functions that I use in my projects, such as [www.laurieherault.com](www.laurieherault.com).
 
-```bash
-bun install
-```
+## Installation
 
-To run:
+bun install @laurieherault/libs
 
-```bash
-bun run src/index.ts
-```
+## Usage
 
-This project was created using `bun init` in bun v1.2.4. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+
+## License
+
+This package is provided as-is, mainly for personal use, but feel free to explore it!

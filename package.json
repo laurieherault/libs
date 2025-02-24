@@ -4,11 +4,19 @@
 	"module": "src/index.ts",
 	"type": "module",
 	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
 		"@types/bun": "latest"
 	},
 	"peerDependencies": {
 		"typescript": "^5"
 	},
 	"author": "Laurie Hérault",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"@paralleldrive/cuid2": "^2.2.2",
+		"@sinclair/typebox": "^0.34.28",
+		"@types/luxon": "^3.4.2",
+		"fractional-indexing": "^3.2.0",
+		"luxon": "^3.5.0"
+	}
 }
