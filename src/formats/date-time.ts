@@ -11,7 +11,7 @@ export function isDateTime(value: string, strictTimeZone?: boolean): boolean {
 	const dateTime: string[] = value.split(DATE_TIME_SEPARATOR);
 	return (
 		dateTime.length === 2 &&
-		IsDate(dateTime[0]) &&
-		IsTime(dateTime[1], strictTimeZone)
+		isDate(dateTime[0]) &&
+		isTime(dateTime[1], strictTimeZone)
 	);
 }

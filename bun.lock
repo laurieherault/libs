@@ -4,6 +4,8 @@
     "": {
       "name": "@laurieherault:libs",
       "dependencies": {
+        "@dpaskhin/unique": "^1.0.0",
+        "@faker-js/faker": "^9.5.0",
         "@paralleldrive/cuid2": "^2.2.2",
         "@sinclair/typebox": "^0.34.28",
         "@types/luxon": "^3.4.2",
@@ -38,6 +40,10 @@
     "@biomejs/cli-win32-arm64": ["@biomejs/cli-win32-arm64@1.9.4", "", { "os": "win32", "cpu": "arm64" }, "sha512-tlbhLk+WXZmgwoIKwHIHEBZUwxml7bRJgk0X2sPyNR3S93cdRq6XulAZRQJ17FYGGzWne0fgrXBKpl7l4M87Hg=="],
 
     "@biomejs/cli-win32-x64": ["@biomejs/cli-win32-x64@1.9.4", "", { "os": "win32", "cpu": "x64" }, "sha512-8Y5wMhVIPaWe6jw2H+KlEm4wP/f7EW3810ZLmDlrEEy5KvBsb9ECEfu/kMWD484ijfQ8+nIi0giMgu9g1UAuuA=="],
+
+    "@dpaskhin/unique": ["@dpaskhin/unique@1.0.0", "", {}, "sha512-LDhq4rqY3PAEONRzFgjgZnjYYrJCVIgcl7TtshvANImEDLSPICElwT3n4EP6f5eIEXtLV0ypIrYJOMoilF5PCg=="],
+
+    "@faker-js/faker": ["@faker-js/faker@9.5.0", "", {}, "sha512-3qbjLv+fzuuCg3umxc9/7YjrEXNaKwHgmig949nfyaTx8eL4FAsvFbu+1JcFUj1YAXofhaDn6JdEUBTYuk0Ssw=="],
 
     "@noble/hashes": ["@noble/hashes@1.7.1", "", {}, "sha512-B8XBPsn4vT/KJAGqDzbwztd+6Yte3P4V7iafm24bxgDe/mlRuK6xmWPuCNrKt2vDafZ8MfJLlchDG/vYafQEjQ=="],
 

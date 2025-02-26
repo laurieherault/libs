@@ -2,14 +2,31 @@ import ky, { type Options } from "ky";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
+// Constantes de configuration
+const DEFAULT_TIMEOUT = 5000; // 5 secondes
+const DEFAULT_RETRIES = 3;
+
+const TooManyRequestsOrErrorMiddleware = async ({
+	error,
+}: { error: Error }) => {
+	const status =
+		error instanceof Error && "response" in error
+			? (error.response as Response)?.status
+			: null;
+
+	if (status !== 429 && (status === null || status < 500)) {
+		throw error;
+	}
+};
+
 class KyBuilder<T> {
 	private urlValue = "";
 	private methodValue: HttpMethod = "GET";
 	private queryParams: Record<string, string> = {};
 	private headers: Record<string, string> = {};
 	private bodyValue?: unknown;
-	private timeoutValue = 5000; // 5 secondes
-	private retryValue = 3; // 3 retries avec backoff automatique
+	private timeoutValue = DEFAULT_TIMEOUT;
+	private retryValue = DEFAULT_RETRIES;
 
 	public url(url: string): this {
 		this.urlValue = url;
@@ -36,16 +53,6 @@ class KyBuilder<T> {
 		return this;
 	}
 
-	public timeout(ms: number): this {
-		this.timeoutValue = ms;
-		return this;
-	}
-
-	public retry(retries: number): this {
-		this.retryValue = retries;
-		return this;
-	}
-
 	public async run(): Promise<T> {
 		if (!this.urlValue) {
 			throw new Error("URL is not set");
@@ -64,9 +71,12 @@ class KyBuilder<T> {
 				...this.headers,
 			},
 			timeout: this.timeoutValue,
+			hooks: {
+				beforeRetry: [TooManyRequestsOrErrorMiddleware],
+			},
 			retry: {
 				limit: this.retryValue,
-				statusCodes: [429], // Vous pouvez préciser quels statuts doivent déclencher un retry (ici 429)
+				afterStatusCodes: [429],
 			},
 		};
 
@@ -87,8 +97,6 @@ class KyBuilder<T> {
  *     .url('https://api.example.com/data')
  *     .method('GET')
  *     .query('limit', '10')
- *     .timeout(5000)   // optionnel, valeur par défaut : 5000ms
- *     .retry(3)        // optionnel, valeur par défaut : 3 retries
  *     .run();
  */
 export function fetchOrFail<T>(): KyBuilder<T> {

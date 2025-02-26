@@ -44,6 +44,7 @@
 - Faker avec unique
 
 # Utils
+- Slugify
 - Builder pattern
 - Message Pack with msgpackr?
 
