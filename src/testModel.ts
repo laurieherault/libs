@@ -1,6 +1,6 @@
-import { describe, expect, test } from "bun:test";
-import { validateOrThrowError, type TSchema } from "./validation";
 import type { TypeCheck } from "@sinclair/typebox/compiler";
+import { describe, expect, test } from "bun:test";
+import { parseOrFail, type TSchema } from "./validation";
 // Interface pour typer fortement chaque cas de test
 export interface ModelTestCase {
 	testName: string;
@@ -24,7 +24,9 @@ export const testModel = (tests: ModelTestCase[]) => {
 			test(`${testName} - validateOrThrow does not throw for good value: ${JSON.stringify(
 				goodValue,
 			)}`, () => {
-				expect(() => validateOrThrowError(check, goodValue)).not.toThrow();
+				const [error, value] = parseOrFail(check, goodValue);
+				expect(error).toBeUndefined();
+				expect(value).toEqual(goodValue);
 			});
 		}
 
@@ -41,7 +43,9 @@ export const testModel = (tests: ModelTestCase[]) => {
 			test(`${testName} - validateOrThrow throws for bad value: ${JSON.stringify(
 				badValue,
 			)}`, () => {
-				expect(() => validateOrThrowError(check, badValue)).toThrow();
+				const [error, value] = parseOrFail(check, badValue);
+				expect(value).toBeUndefined();
+				expect(error).toBeInstanceOf(Error);
 			});
 		}
 	}
