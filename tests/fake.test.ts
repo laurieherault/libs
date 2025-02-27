@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, test } from "bun:test";
 import { fake } from "../src/fake";
-import { isIP, isIPv4 } from "../src/formats";
+import { isIP, isIPv4 } from "../src/validation/formats";
 
 describe("fake", () => {
 	describe("name", () => {

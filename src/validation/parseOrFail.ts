@@ -1,8 +1,9 @@
 export * from "@sinclair/typebox";
 import { FormatRegistry, type Static, type TSchema } from "@sinclair/typebox";
 import type { TypeCheck } from "@sinclair/typebox/compiler";
-import { tryOrFailSync, type Either } from "./tryOrFail";
+import { tryOrFailSync, type Either } from "../tryOrFail";
 
+import { isValidId } from "../id";
 import {
 	isDate,
 	isDateTime,
@@ -12,7 +13,6 @@ import {
 	isTime,
 	isUrl,
 } from "./formats";
-import { isValidId } from "./id";
 
 FormatRegistry.Set("email", (value) => isEmail(value));
 FormatRegistry.Set("date-time", (value) => isDateTime(value));

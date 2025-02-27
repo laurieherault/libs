@@ -1,6 +1,6 @@
 import type { TypeCheck } from "@sinclair/typebox/compiler";
 import { describe, expect, test } from "bun:test";
-import { parseOrFail, type TSchema } from "./validation";
+import { parseOrFail, type TSchema } from "./parseOrFail";
 // Interface pour typer fortement chaque cas de test
 export interface ModelTestCase {
 	testName: string;
