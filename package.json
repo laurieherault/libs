@@ -5,6 +5,7 @@
 	"type": "module",
 	"sideEffects": false,
 	"scripts": {
+		"build": "bun build.ts",
 		"test": "bun test",
 		"release": "release-it"
 	},
