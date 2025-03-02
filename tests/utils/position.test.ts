@@ -14,7 +14,7 @@ import {
 	getRange,
 	sortItemsByPosition,
 	type PositionedItem,
-} from "../src/position";
+} from "../../src/utils";
 
 // Création d'un tableau d'items déjà triés par leur propriété `position` en générant les positions
 const positions = generatePositionsFirst(5);

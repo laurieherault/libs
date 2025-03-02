@@ -1,7 +1,7 @@
 import { Type } from "@sinclair/typebox";
 import { TypeCompiler } from "@sinclair/typebox/compiler";
 import { describe, expect, test } from "bun:test";
-import { parseOrFail } from "../src/validation/parseOrFail";
+import { parseOrFail } from "../../src/validation";
 
 describe("parseOrFail", () => {
 	const UserSchema = Type.Object({

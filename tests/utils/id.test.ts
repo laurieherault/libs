@@ -1,6 +1,6 @@
 // cuid2.test.ts
 import { expect, test } from "bun:test";
-import { createUniqueId, isValidId } from "../src/id"; // Adaptez le chemin d'import si nécessaire
+import { createUniqueId, isValidId } from "../../src/utils/id"; // Adaptez le chemin d'import si nécessaire
 
 test("createUniqueId returns a string and a valid CUID", () => {
 	const id = createUniqueId();

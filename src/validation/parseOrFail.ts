@@ -1,9 +1,9 @@
 export * from "@sinclair/typebox";
 import { FormatRegistry, type Static, type TSchema } from "@sinclair/typebox";
 import type { TypeCheck } from "@sinclair/typebox/compiler";
-import { tryOrFailSync, type Either } from "../tryOrFail";
+import { tryOrFailSync, type Either } from "../utils/tryOrFail";
 
-import { isValidId } from "../id";
+import { isValidId } from "../utils/id";
 import {
 	isDate,
 	isDateTime,

@@ -1,6 +1,7 @@
+
 # My libs
 
-This package is a collection of personal libraries and utility functions that I use in my projects, such as [www.laurieherault.com](www.laurieherault.com).
+This package is a collection of personal libraries and utility functions that I use in my projects, such as [www.laurieherault.com](https://www.laurieherault.com/).
 
 ## Installation
 
