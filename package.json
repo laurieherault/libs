@@ -1,16 +1,26 @@
 {
 	"name": "@laurieherault/libs",
 	"version": "0.0.5",
-	"module": "src/index.ts",
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"type": "module",
 	"sideEffects": false,
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"files": ["dist"],
 	"scripts": {
 		"build": "bun build.ts",
 		"test": "bun test",
 		"release": "release-it"
 	},
 	"hooks": {
-		"before:init": "bun run test"
+		"before:init": "bun run test && bun run build"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
@@ -19,6 +29,7 @@
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.2.0",
 		"@types/bun": "latest",
+		"bun-plugin-dts": "^0.3.0",
 		"release-it": "^18.1.2"
 	},
 	"peerDependencies": {
