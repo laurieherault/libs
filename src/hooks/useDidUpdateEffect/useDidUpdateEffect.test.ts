@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { describe, expect, test } from "bun:test";
-import { useDidUpdateEffect } from "../../src/hooks";
+import { useDidUpdateEffect } from "./index";
 
 describe("useDidUpdateEffect", () => {
 	test("useDidUpdateEffect should not call the callback on mount, but on dependency changes", () => {

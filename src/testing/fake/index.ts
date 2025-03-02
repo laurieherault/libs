@@ -1,6 +1,6 @@
 import { unique } from "@dpaskhin/unique";
 import { faker } from "@faker-js/faker";
-import { createUniqueId } from "../utils/id";
+import { createUniqueId } from "../../utils/id";
 
 export const fake = {
 	name: () => faker.person.fullName(),

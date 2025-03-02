@@ -1,10 +1,5 @@
-// tryOrFail.test.ts
 import { expect, test } from "bun:test";
-import {
-	type Either,
-	tryOrFail,
-	tryOrFailSync,
-} from "../../src/utils/tryOrFail";
+import { tryOrFail, tryOrFailSync } from "./index";
 
 test("tryOrFailSync returns success tuple when function does not throw", () => {
 	const [error, result] = tryOrFailSync(() => 42);

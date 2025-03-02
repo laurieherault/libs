@@ -1,4 +1,3 @@
-// position.test.ts
 import { expect, test } from "bun:test";
 import {
 	generatePositionAfter,
@@ -14,7 +13,7 @@ import {
 	getRange,
 	sortItemsByPosition,
 	type PositionedItem,
-} from "../../src/utils";
+} from "./index";
 
 // Création d'un tableau d'items déjà triés par leur propriété `position` en générant les positions
 const positions = generatePositionsFirst(5);

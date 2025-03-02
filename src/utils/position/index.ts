@@ -1,4 +1,3 @@
-// Importation de la fonction pour générer des clés fractionnaires ordonnées
 import { generateNKeysBetween } from "fractional-indexing";
 
 /**

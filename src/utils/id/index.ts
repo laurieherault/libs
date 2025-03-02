@@ -1,4 +1,3 @@
-// Importation de fonctions de la librairie cuid2 pour la gestion des identifiants uniques
 import { createId, isCuid } from "@paralleldrive/cuid2";
 
 /**
