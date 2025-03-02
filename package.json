@@ -1,6 +1,6 @@
 {
 	"name": "@laurieherault/libs",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -13,7 +13,9 @@
 			"types": "./dist/index.d.ts"
 		}
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "bun build.ts",
 		"test": "bun test",
