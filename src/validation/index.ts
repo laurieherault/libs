@@ -14,14 +14,16 @@ import {
 	isUrl,
 } from "./formats";
 
-FormatRegistry.Set("email", (value) => isEmail(value));
-FormatRegistry.Set("date-time", (value) => isDateTime(value));
-FormatRegistry.Set("time", (value) => isTime(value));
-FormatRegistry.Set("date", (value) => isDate(value));
-FormatRegistry.Set("ipv4", (value) => isIPv4(value));
-FormatRegistry.Set("ipv6", (value) => isIPv6(value));
-FormatRegistry.Set("url", (value) => isUrl(value));
-FormatRegistry.Set("cuid2", (value) => isValidId(value));
+export const iniValidationsAdvanced = () => {
+	FormatRegistry.Set("email", (value) => isEmail(value));
+	FormatRegistry.Set("date-time", (value) => isDateTime(value));
+	FormatRegistry.Set("time", (value) => isTime(value));
+	FormatRegistry.Set("date", (value) => isDate(value));
+	FormatRegistry.Set("ipv4", (value) => isIPv4(value));
+	FormatRegistry.Set("ipv6", (value) => isIPv6(value));
+	FormatRegistry.Set("url", (value) => isUrl(value));
+	FormatRegistry.Set("cuid2", (value) => isValidId(value));
+};
 
 /**
  * Valide une donnée à l'aide d'un validateur compilé et retourne un Either.

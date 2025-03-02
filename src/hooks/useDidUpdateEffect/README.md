@@ -5,7 +5,7 @@
 
 ## Usage
 ```tsx
-import { useDidUpdateEffect } from 'path/to/hooks';
+import { useDidUpdateEffect } from '@laurieherault/libs';
 
 const MyComponent = ({ data }) => {
   useDidUpdateEffect(() => {

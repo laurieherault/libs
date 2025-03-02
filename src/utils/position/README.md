@@ -12,7 +12,7 @@ import {
   generatePositionBetween,
   sortItemsByPosition,
   type PositionedItem
-} from 'path/to/utils/position';
+} from '@laurieherault/libs';
 
 // Create initial positions
 const positions = generatePositionsFirst(3);

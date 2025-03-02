@@ -5,7 +5,7 @@
 
 ## Usage
 ```tsx
-import { useUnmount } from 'path/to/hooks';
+import { useUnmount } from '@laurieherault/libs';
 
 const MyComponent = () => {
   useUnmount(() => {

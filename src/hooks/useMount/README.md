@@ -5,7 +5,7 @@
 
 ## Usage
 ```tsx
-import { useMount } from 'path/to/hooks';
+import { useMount } from '@laurieherault/libs';
 
 const MyComponent = () => {
   useMount(() => {

@@ -7,7 +7,7 @@
 ```typescript
 import { Type } from "@sinclair/typebox";
 import { TypeCompiler } from "@sinclair/typebox/compiler";
-import { testModel } from 'path/to/testing';
+import { testModel } from '@laurieherault/libs';
 
 // Define a TypeBox schema
 const UserSchema = Type.Object({
@@ -67,7 +67,7 @@ For each test case, `testModel` automatically generates multiple unit tests that
 ```typescript
 import { Type } from "@sinclair/typebox";
 import { TypeCompiler } from "@sinclair/typebox/compiler";
-import { testModel } from 'path/to/testing';
+import { testModel } from '@laurieherault/libs';
 
 // Define multiple related schemas
 const AddressSchema = Type.Object({

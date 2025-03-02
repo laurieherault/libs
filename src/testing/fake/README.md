@@ -5,7 +5,7 @@
 
 ## Usage
 ```typescript
-import { fake } from 'path/to/testing';
+import { fake } from '@laurieherault/libs';
 
 // Generate a full name
 const name = fake.name();

@@ -5,7 +5,7 @@ The `id` module provides functions for generating and validating unique identifi
 
 ## Usage
 ```typescript
-import { createUniqueId, isValidId } from 'path/to/utils/id';
+import { createUniqueId, isValidId } from '@laurieherault/libs';
 
 // Generate a new unique identifier
 const newId = createUniqueId();

@@ -5,7 +5,7 @@ The `tryOrFail` module provides utilities for handling errors elegantly using th
 
 ## Usage
 ```typescript
-import { tryOrFail, tryOrFailSync, type Either } from 'path/to/utils/tryOrFail';
+import { tryOrFail, tryOrFailSync, type Either } from '@laurieherault/libs';
 
 // Synchronous version
 const [error, result] = tryOrFailSync(() => {
