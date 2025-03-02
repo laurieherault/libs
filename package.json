@@ -4,7 +4,11 @@
 	"module": "src/index.ts",
 	"type": "module",
 	"scripts": {
+		"test": "bun test",
 		"release": "release-it"
+	},
+	"hooks": {
+		"pre-commit": "bun test"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
