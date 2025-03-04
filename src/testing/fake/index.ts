@@ -1,11 +1,10 @@
 import { unique } from "@dpaskhin/unique";
 import { faker } from "@faker-js/faker";
-import { createUniqueId } from "../../utils/id";
 
 export const fake = {
 	name: () => faker.person.fullName(),
 	words: (min: number, max: number) => faker.lorem.words({ min, max }),
-	id: () => createUniqueId(),
+	id: () => faker.string.alpha({ length: { min: 24, max: 24 } }),
 	boolean: () => faker.datatype.boolean(),
 	integer: (min: number, max: number) => faker.number.int({ min, max }),
 	float: (min: number, max: number) => faker.number.float({ min, max }),

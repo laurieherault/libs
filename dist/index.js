@@ -1283,12 +1283,12 @@ var require_utils = __commonJS((exports) => {
     return res;
   }
 
-  class Hash {
+  class Hash2 {
     clone() {
       return this._cloneInto();
     }
   }
-  exports.Hash = Hash;
+  exports.Hash = Hash2;
   function checkOpts(defaults, opts) {
     if (opts !== undefined && {}.toString.call(opts) !== "[object Object]")
       throw new Error("Options should be object or undefined");
@@ -3805,24 +3805,11 @@ var Fi = ot;
 // node_modules/@faker-js/faker/dist/chunk-X5AUZP7O.js
 var f2 = new Xe2({ locale: [ys, Fi] });
 
-// node_modules/@paralleldrive/cuid2/index.js
-var { createId, init, getConstants, isCuid } = require_src();
-var $createId = createId;
-var $isCuid = isCuid;
-
-// src/utils/id/index.ts
-var createUniqueId = () => {
-  return $createId();
-};
-var isValidId = (id) => {
-  return $isCuid(id);
-};
-
 // src/testing/fake/index.ts
 var fake = {
   name: () => f2.person.fullName(),
   words: (min, max) => f2.lorem.words({ min, max }),
-  id: () => createUniqueId(),
+  id: () => f2.string.alpha({ length: { min: 24, max: 24 } }),
   boolean: () => f2.datatype.boolean(),
   integer: (min, max) => f2.number.int({ min, max }),
   float: (min, max) => f2.number.float({ min, max }),
@@ -9247,6 +9234,19 @@ var testModel = (tests) => {
     }
   }
 };
+// node_modules/@paralleldrive/cuid2/index.js
+var { createId, init, getConstants, isCuid } = require_src();
+var $createId = createId;
+var $isCuid = isCuid;
+
+// src/utils/id/index.ts
+var createUniqueId = () => {
+  return $createId();
+};
+var isValidId = (id) => {
+  return $isCuid(id);
+};
+
 // src/utils/misc/sleep.ts
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
