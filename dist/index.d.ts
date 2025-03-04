@@ -246,11 +246,13 @@ export declare function getItemById<T extends PositionedItem>(items: T[], id: st
  */
 export declare function getIndexByItem<T extends PositionedItem>(items: T[], current: T): number;
 export * from "@sinclair/typebox";
+export * from "@sinclair/typebox/compiler";
 
 export {
 	DateTime,
 	Static,
 	TSchema,
+	TypeCheck,
 };
 
 export {};
