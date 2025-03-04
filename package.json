@@ -19,9 +19,7 @@
 		"test": "bun test",
 		"release": "release-it"
 	},
-	"hooks": {
-		"before:init": ["bun run test", "bun run build"]
-	},
+
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"@happy-dom/global-registrator": "^17.1.8",
