@@ -1,9 +1,11 @@
 import { Type } from "@sinclair/typebox";
 import { TypeCompiler } from "@sinclair/typebox/compiler";
 import { describe, expect, test } from "bun:test";
-import { parseOrFail } from ".";
+import { iniValidationsAdvanced, parseOrFail } from ".";
 
 describe("parseOrFail", () => {
+	// iniValidationsAdvanced();
+
 	const UserSchema = Type.Object({
 		name: Type.String(),
 		age: Type.Number(),

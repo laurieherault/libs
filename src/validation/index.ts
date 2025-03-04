@@ -47,3 +47,24 @@ export function parseOrFail<T extends TSchema>(
 		return value as Static<T>;
 	});
 }
+
+/**
+ * Valide une donnée à l'aide d'un validateur compilé.
+ * Lance une erreur en cas d'échec de validation.
+ *
+ * @param validator - Le validateur compilé (issu de TypeCompiler.Compile)
+ * @param value - La valeur à valider
+ *
+ * @returns Static<T> - La valeur validée
+ * @throws Error - En cas d'échec de validation
+ */
+export function parseOrThrow<T extends TSchema>(
+	validator: TypeCheck<T>,
+	value: unknown,
+): Static<T> {
+	const [error, result] = parseOrFail(validator, value);
+	if (error) {
+		throw error;
+	}
+	return result;
+}
