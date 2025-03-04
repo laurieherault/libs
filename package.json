@@ -19,7 +19,6 @@
 		"test": "bun test",
 		"release": "release-it"
 	},
-
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"@happy-dom/global-registrator": "^17.1.8",
