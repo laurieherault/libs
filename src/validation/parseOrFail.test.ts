@@ -4,7 +4,7 @@ import { describe, expect, test } from "bun:test";
 import { iniValidationsAdvanced, parseOrFail } from ".";
 
 describe("parseOrFail", () => {
-	// iniValidationsAdvanced();
+	iniValidationsAdvanced();
 
 	const UserSchema = Type.Object({
 		name: Type.String(),
