@@ -6864,6 +6864,7 @@ function isUrl(value) {
 }
 
 // src/validation/index.ts
+var cuid2Regex = /^[a-z0-9]{24}$/;
 var iniValidationsAdvanced = () => {
   exports_format.Set("email", (value) => isEmail(value));
   exports_format.Set("date-time", (value) => isDateTime(value));
@@ -6872,7 +6873,7 @@ var iniValidationsAdvanced = () => {
   exports_format.Set("ipv4", (value) => isIPv4(value));
   exports_format.Set("ipv6", (value) => isIPv6(value));
   exports_format.Set("url", (value) => isUrl(value));
-  exports_format.Set("cuid2", (value) => isValidId(value));
+  exports_format.Set("cuid2", (value) => cuid2Regex.test(value));
 };
 function parseOrFail(validator, value) {
   return tryOrFailSync(() => {
@@ -7206,6 +7207,7 @@ export {
   generatePositionBefore,
   generatePositionAfter,
   fake,
+  cuid2Regex,
   createUniqueId,
   Void,
   exports_value as ValueGuard,

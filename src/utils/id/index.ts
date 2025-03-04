@@ -19,6 +19,7 @@ export const createUniqueId = (): string => {
  * @param {string} id - L'identifiant à valider.
  * @returns {boolean} `true` si l'identifiant est valide, sinon `false`.
  */
+
 export const isValidId = (id: string): boolean => {
 	return isCuid(id);
 };

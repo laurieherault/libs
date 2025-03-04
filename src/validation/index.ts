@@ -13,7 +13,7 @@ import {
 	isTime,
 	isUrl,
 } from "./formats";
-
+export const cuid2Regex = /^[a-z0-9]{24}$/;
 export const iniValidationsAdvanced = () => {
 	FormatRegistry.Set("email", (value) => isEmail(value));
 	FormatRegistry.Set("date-time", (value) => isDateTime(value));
@@ -22,7 +22,8 @@ export const iniValidationsAdvanced = () => {
 	FormatRegistry.Set("ipv4", (value) => isIPv4(value));
 	FormatRegistry.Set("ipv6", (value) => isIPv6(value));
 	FormatRegistry.Set("url", (value) => isUrl(value));
-	FormatRegistry.Set("cuid2", (value) => isValidId(value));
+	// FormatRegistry.Set("cuid2", (value) => isValidId(value));
+	FormatRegistry.Set("cuid2", (value) => cuid2Regex.test(value));
 };
 
 /**

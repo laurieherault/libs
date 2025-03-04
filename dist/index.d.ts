@@ -80,6 +80,7 @@ export declare const tryOrFailSync: <T, E = unknown>(cb: () => T) => Either<T, E
  * @returns Une Promise qui résout un tuple de type Either<T, E>.
  */
 export declare const tryOrFail: <T, E = unknown>(cb: () => Promise<T>) => Promise<Either<T, E>>;
+export declare const cuid2Regex: RegExp;
 export declare const iniValidationsAdvanced: () => void;
 /**
  * Valide une donnée à l'aide d'un validateur compilé et retourne un Either.
