@@ -6883,6 +6883,13 @@ function parseOrFail(validator, value) {
     return value;
   });
 }
+function parseOrThrow(validator, value) {
+  const [error, result] = parseOrFail(validator, value);
+  if (error) {
+    throw error;
+  }
+  return result;
+}
 
 // src/testing/testModel/index.ts
 var testModel = (tests) => {
@@ -7183,6 +7190,7 @@ export {
   testModel,
   sortItemsByPosition,
   sleep,
+  parseOrThrow,
   parseOrFail,
   isValidId,
   iniValidationsAdvanced,

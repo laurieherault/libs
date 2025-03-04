@@ -92,6 +92,17 @@ export declare const iniValidationsAdvanced: () => void;
  *                                    [erreur, undefined] en cas d'échec de validation
  */
 export declare function parseOrFail<T extends TSchema>(validator: TypeCheck<T>, value: unknown): Either<Static<T>, Error>;
+/**
+ * Valide une donnée à l'aide d'un validateur compilé.
+ * Lance une erreur en cas d'échec de validation.
+ *
+ * @param validator - Le validateur compilé (issu de TypeCompiler.Compile)
+ * @param value - La valeur à valider
+ *
+ * @returns Static<T> - La valeur validée
+ * @throws Error - En cas d'échec de validation
+ */
+export declare function parseOrThrow<T extends TSchema>(validator: TypeCheck<T>, value: unknown): Static<T>;
 export interface ModelTestCase {
 	testName: string;
 	goodValues: unknown[];
