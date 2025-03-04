@@ -1,6 +1,6 @@
 {
 	"name": "@laurieherault/libs",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -19,7 +19,7 @@
 	"scripts": {
 		"build": "bun build.ts",
 		"test": "bun test",
-		"release": "release-it"
+		"release": "release-it --ci"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
