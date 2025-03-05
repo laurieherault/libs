@@ -5,7 +5,9 @@ export const fake = {
 	name: () => faker.person.fullName(),
 	words: (min: number, max: number) => faker.lorem.words({ min, max }),
 	id: () =>
-		faker.string.alpha({ length: { min: 24, max: 24 }, casing: "lower" }),
+		unique(
+			faker.string.alpha({ length: { min: 24, max: 24 }, casing: "lower" }),
+		),
 	boolean: () => faker.datatype.boolean(),
 	integer: (min: number, max: number) => faker.number.int({ min, max }),
 	float: (min: number, max: number) => faker.number.float({ min, max }),
