@@ -1,25 +1,20 @@
 {
 	"name": "@laurieherault/libs",
-	"version": "0.0.16",
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"version": "0.0.17",
+	"main": "./src/index.ts",
+	"module": "./src/index.ts",
 	"type": "module",
 	"sideEffects": false,
 	"exports": {
 		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.js",
-			"types": "./dist/index.d.ts"
+			"import": "./dist/index.ts"
 		},
 		"./test": {
-			"import": "./dist/test.js",
-			"require": "./dist/test.js",
-			"types": "./dist/test.d.ts"
+			"import": "./dist/test.ts"
 		}
 	},
 	"files": [
-		"dist"
+		"src"
 	],
 	"scripts": {
 		"build": "bun build.ts",
