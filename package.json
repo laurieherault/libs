@@ -1,17 +1,11 @@
 {
 	"name": "@laurieherault/libs",
-	"version": "0.0.17",
-	"main": "./src/index.ts",
-	"module": "./src/index.ts",
-	"type": "module",
+	"version": "0.0.18",
+	"main": "src/index.ts",
 	"sideEffects": false,
 	"exports": {
-		".": {
-			"import": "./dist/index.ts"
-		},
-		"./test": {
-			"import": "./dist/test.ts"
-		}
+		".": "./src/index.ts",
+		"./test": "./src/test.ts"
 	},
 	"files": [
 		"src"
