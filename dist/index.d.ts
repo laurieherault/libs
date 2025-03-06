@@ -24,94 +24,6 @@ export declare const useMount: (callback: () => void) => void;
  * @param callback - Fonction à exécuter lors du démontage.
  */
 export declare const useUnmount: (callback: () => void) => void;
-export declare const fake: {
-	name: () => string;
-	words: (min: number, max: number) => string;
-	id: () => string;
-	boolean: () => boolean;
-	integer: (min: number, max: number) => number;
-	float: (min: number, max: number) => number;
-	string: (min: number, max: number) => string;
-	email: () => string;
-	ip: () => string;
-	url: () => string;
-	randomInArray: <T>(array: T[]) => T;
-	randomsInArray: <T>(array: T[], count?: number | {
-		min: number;
-		max: number;
-	}) => T[];
-	date: {
-		anytime: () => Date;
-		past: (days?: number, refDate?: string | Date | number) => Date;
-		future: (days?: number, refDate?: string | Date | number) => Date;
-		between: (start: Date, end: Date) => Date;
-		timezone: () => string;
-	};
-};
-/**
- * Type générique Either qui représente soit un succès, soit un échec.
- *
- * Soit [undefined, T] pour un succès (aucune erreur, valeur de type T),
- * soit [E, undefined] pour un échec (erreur de type E, aucune valeur).
- */
-export type Either<T, E = unknown> = [
-	undefined,
-	T
-] | [
-	E,
-	undefined
-];
-/**
- * Exécute la fonction fournie dans un contexte "sécurisé".
- *
- * En cas de succès, retourne [undefined, résultat].
- * En cas d'erreur, retourne [erreur, undefined].
- *
- * @param cb - La fonction à exécuter.
- * @returns Un tuple de type Either<T, E>.
- */
-export declare const tryOrFailSync: <T, E = unknown>(cb: () => T) => Either<T, E>;
-/**
- * Exécute la fonction asynchrone fournie dans un contexte "sécurisé".
- *
- * En cas de succès, retourne [undefined, résultat] dans une Promise.
- * En cas d'erreur, retourne [erreur, undefined] dans une Promise.
- *
- * @param cb - La fonction asynchrone à exécuter.
- * @returns Une Promise qui résout un tuple de type Either<T, E>.
- */
-export declare const tryOrFail: <T, E = unknown>(cb: () => Promise<T>) => Promise<Either<T, E>>;
-export declare const cuid2Regex: RegExp;
-export declare const iniValidationsAdvanced: () => void;
-/**
- * Valide une donnée à l'aide d'un validateur compilé et retourne un Either.
- * En cas d'échec de validation, retourne une erreur détaillée.
- *
- * @param validator - Le validateur compilé (issu de TypeCompiler.Compile)
- * @param value - La valeur à valider
- *
- * @returns Either<Static<T>, Error> - [undefined, valeurValidée] en cas de succès,
- *                                    [erreur, undefined] en cas d'échec de validation
- */
-export declare function parseOrFail<T extends TSchema>(validator: TypeCheck<T>, value: unknown): Either<Static<T>, Error>;
-/**
- * Valide une donnée à l'aide d'un validateur compilé.
- * Lance une erreur en cas d'échec de validation.
- *
- * @param validator - Le validateur compilé (issu de TypeCompiler.Compile)
- * @param value - La valeur à valider
- *
- * @returns Static<T> - La valeur validée
- * @throws Error - En cas d'échec de validation
- */
-export declare function parseOrThrow<T extends TSchema>(validator: TypeCheck<T>, value: unknown): Static<T>;
-export interface ModelTestCase {
-	testName: string;
-	goodValues: unknown[];
-	badValues: unknown[];
-	check: TypeCheck<TSchema>;
-}
-export declare const testModel: (tests: ModelTestCase[]) => void;
 /**
  * Crée et retourne un identifiant unique.
  *
@@ -246,6 +158,63 @@ export declare function getItemById<T extends PositionedItem>(items: T[], id: st
  * @returns L'indice de l'élément dans le tableau, ou -1 s'il n'est pas trouvé.
  */
 export declare function getIndexByItem<T extends PositionedItem>(items: T[], current: T): number;
+/**
+ * Type générique Either qui représente soit un succès, soit un échec.
+ *
+ * Soit [undefined, T] pour un succès (aucune erreur, valeur de type T),
+ * soit [E, undefined] pour un échec (erreur de type E, aucune valeur).
+ */
+export type Either<T, E = unknown> = [
+	undefined,
+	T
+] | [
+	E,
+	undefined
+];
+/**
+ * Exécute la fonction fournie dans un contexte "sécurisé".
+ *
+ * En cas de succès, retourne [undefined, résultat].
+ * En cas d'erreur, retourne [erreur, undefined].
+ *
+ * @param cb - La fonction à exécuter.
+ * @returns Un tuple de type Either<T, E>.
+ */
+export declare const tryOrFailSync: <T, E = unknown>(cb: () => T) => Either<T, E>;
+/**
+ * Exécute la fonction asynchrone fournie dans un contexte "sécurisé".
+ *
+ * En cas de succès, retourne [undefined, résultat] dans une Promise.
+ * En cas d'erreur, retourne [erreur, undefined] dans une Promise.
+ *
+ * @param cb - La fonction asynchrone à exécuter.
+ * @returns Une Promise qui résout un tuple de type Either<T, E>.
+ */
+export declare const tryOrFail: <T, E = unknown>(cb: () => Promise<T>) => Promise<Either<T, E>>;
+export declare const cuid2Regex: RegExp;
+export declare const iniValidationsAdvanced: () => void;
+/**
+ * Valide une donnée à l'aide d'un validateur compilé et retourne un Either.
+ * En cas d'échec de validation, retourne une erreur détaillée.
+ *
+ * @param validator - Le validateur compilé (issu de TypeCompiler.Compile)
+ * @param value - La valeur à valider
+ *
+ * @returns Either<Static<T>, Error> - [undefined, valeurValidée] en cas de succès,
+ *                                    [erreur, undefined] en cas d'échec de validation
+ */
+export declare function parseOrFail<T extends TSchema>(validator: TypeCheck<T>, value: unknown): Either<Static<T>, Error>;
+/**
+ * Valide une donnée à l'aide d'un validateur compilé.
+ * Lance une erreur en cas d'échec de validation.
+ *
+ * @param validator - Le validateur compilé (issu de TypeCompiler.Compile)
+ * @param value - La valeur à valider
+ *
+ * @returns Static<T> - La valeur validée
+ * @throws Error - En cas d'échec de validation
+ */
+export declare function parseOrThrow<T extends TSchema>(validator: TypeCheck<T>, value: unknown): Static<T>;
 export * from "@sinclair/typebox";
 export * from "@sinclair/typebox/compiler";
 

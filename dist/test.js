@@ -29,179 +29,48 @@ var __export = (target, all) => {
     });
 };
 
-// src/index.ts
-var exports_src = {};
-__export(exports_src, {
-  useUnmount: () => useUnmount,
-  useMount: () => useMount,
-  useEvent: () => useEvent,
-  useDidUpdateEffect: () => useDidUpdateEffect,
-  tryOrFailSync: () => tryOrFailSync,
-  tryOrFail: () => tryOrFail,
-  sortItemsByPosition: () => sortItemsByPosition,
-  sleep: () => sleep,
+// src/testing/fake/index.ts
+import { unique } from "@dpaskhin/unique";
+import { faker } from "@faker-js/faker";
+var fake = {
+  name: () => faker.person.fullName(),
+  words: (min, max) => faker.lorem.words({ min, max }),
+  id: () => unique(faker.string.alpha({ length: { min: 24, max: 24 }, casing: "lower" })),
+  boolean: () => faker.datatype.boolean(),
+  integer: (min, max) => faker.number.int({ min, max }),
+  float: (min, max) => faker.number.float({ min, max }),
+  string: (min, max) => faker.string.alpha({ length: { min, max } }),
+  email: () => unique(faker.internet.email),
+  ip: () => faker.internet.ip(),
+  url: () => faker.internet.url(),
+  randomInArray: (array) => faker.helpers.arrayElement(array),
+  randomsInArray: (array, count) => faker.helpers.arrayElements(array, count),
+  date: {
+    anytime: () => faker.date.anytime(),
+    past: (days, refDate) => faker.date.recent({ days, refDate }),
+    future: (days, refDate) => faker.date.soon({ days, refDate }),
+    between: (start, end) => faker.date.between({ from: start, to: end }),
+    timezone: () => faker.location.timeZone()
+  }
+};
+
+// src/testing/testModel/index.ts
+var {expect, test } = globalThis.Bun.jest(import.meta.path);
+
+// src/validation/index.ts
+var exports_validation = {};
+__export(exports_validation, {
   parseOrThrow: () => parseOrThrow,
   parseOrFail: () => parseOrFail,
-  isValidId: () => isValidId,
   iniValidationsAdvanced: () => iniValidationsAdvanced,
-  getRange: () => getRange,
-  getPrevious: () => getPrevious,
-  getNext: () => getNext,
-  getLast: () => getLast,
-  getItemById: () => getItemById,
-  getIndexByItem: () => getIndexByItem,
-  getFirst: () => getFirst,
-  generatePositionsFirst: () => generatePositionsFirst,
-  generatePositionBetween: () => generatePositionBetween,
-  generatePositionBefore: () => generatePositionBefore,
-  generatePositionAfter: () => generatePositionAfter,
-  cuid2Regex: () => cuid2Regex,
-  createUniqueId: () => createUniqueId,
-  DateTime: () => DateTime
+  cuid2Regex: () => cuid2Regex
 });
-import { DateTime } from "luxon";
+__reExport(exports_validation, typebox);
+__reExport(exports_validation, compiler);
+import"@sinclair/typebox";
+import"@sinclair/typebox/compiler";
+import { FormatRegistry } from "@sinclair/typebox";
 
-// src/hooks/index.ts
-var exports_hooks = {};
-__export(exports_hooks, {
-  useUnmount: () => useUnmount,
-  useMount: () => useMount,
-  useEvent: () => useEvent,
-  useDidUpdateEffect: () => useDidUpdateEffect
-});
-
-// src/hooks/useDidUpdateEffect/index.ts
-import { useEffect, useRef } from "react";
-var useDidUpdateEffect = (callback, dependencies) => {
-  const isInitialMount = useRef(true);
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      callback();
-    }
-  }, dependencies);
-};
-// src/hooks/useEvent/index.ts
-import { useEffect as useEffect2, useRef as useRef2 } from "react";
-function useEvent(eventName, handler, element = window) {
-  const savedHandler = useRef2(handler);
-  useEffect2(() => {
-    savedHandler.current = handler;
-  }, [handler]);
-  useEffect2(() => {
-    if (!element?.addEventListener)
-      throw new Error("Element does not support addEventListener");
-    const eventListener = (event) => {
-      savedHandler.current(event);
-    };
-    element.addEventListener(eventName, eventListener);
-    return () => {
-      element.removeEventListener(eventName, eventListener);
-    };
-  }, [eventName, element]);
-}
-// src/hooks/useMount/index.ts
-import { useEffect as useEffect3 } from "react";
-var useMount = (callback) => {
-  useEffect3(() => {
-    callback();
-  }, []);
-};
-// src/hooks/useUnmount/index.ts
-import { useEffect as useEffect4 } from "react";
-var useUnmount = (callback) => {
-  useEffect4(() => {
-    return () => {
-      callback();
-    };
-  }, []);
-};
-// src/utils/index.ts
-var exports_utils = {};
-__export(exports_utils, {
-  tryOrFailSync: () => tryOrFailSync,
-  tryOrFail: () => tryOrFail,
-  sortItemsByPosition: () => sortItemsByPosition,
-  sleep: () => sleep,
-  isValidId: () => isValidId,
-  getRange: () => getRange,
-  getPrevious: () => getPrevious,
-  getNext: () => getNext,
-  getLast: () => getLast,
-  getItemById: () => getItemById,
-  getIndexByItem: () => getIndexByItem,
-  getFirst: () => getFirst,
-  generatePositionsFirst: () => generatePositionsFirst,
-  generatePositionBetween: () => generatePositionBetween,
-  generatePositionBefore: () => generatePositionBefore,
-  generatePositionAfter: () => generatePositionAfter,
-  createUniqueId: () => createUniqueId
-});
-
-// src/utils/id/index.ts
-import { createId, isCuid } from "@paralleldrive/cuid2";
-var createUniqueId = () => {
-  return createId();
-};
-var isValidId = (id) => {
-  return isCuid(id);
-};
-// src/utils/misc/sleep.ts
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-// src/utils/position/index.ts
-import { generateNKeysBetween } from "fractional-indexing";
-var generatePositionsFirst = (n) => {
-  return generateNKeysBetween(null, null, n);
-};
-var generatePositionAfter = (after, n) => {
-  return generateNKeysBetween(after, null, n);
-};
-var generatePositionBefore = (before, n) => {
-  return generateNKeysBetween(null, before, n);
-};
-var generatePositionBetween = (a, b, n) => {
-  return generateNKeysBetween(a, b, n);
-};
-function sortItemsByPosition(items) {
-  return items.sort((a, b) => {
-    if (a.position < b.position)
-      return -1;
-    if (a.position > b.position)
-      return 1;
-    return 0;
-  });
-}
-function getFirst(items) {
-  return items[0];
-}
-function getLast(items) {
-  return items.length > 0 ? items[items.length - 1] : undefined;
-}
-function getNext(items, current) {
-  const index = items.findIndex((item) => item.id === current.id);
-  return index >= 0 && index < items.length - 1 ? items[index + 1] : undefined;
-}
-function getPrevious(items, current) {
-  const index = items.findIndex((item) => item.id === current.id);
-  return index > 0 ? items[index - 1] : undefined;
-}
-function getRange(items, start, end) {
-  const startIndex = items.findIndex((item) => item.id === start.id);
-  const endIndex = items.findIndex((item) => item.id === end.id);
-  if (startIndex === -1 || endIndex === -1)
-    return [];
-  const [from, to] = startIndex <= endIndex ? [startIndex, endIndex] : [endIndex, startIndex];
-  return items.slice(from, to + 1);
-}
-function getItemById(items, id) {
-  return items.find((item) => item.id === id);
-}
-function getIndexByItem(items, current) {
-  return items.findIndex((item) => item.id === current.id);
-}
 // src/utils/tryOrFail/index.ts
 var exports_tryOrFail = {};
 __export(exports_tryOrFail, {
@@ -224,19 +93,6 @@ var tryOrFail = async (cb) => {
     return [error, undefined];
   }
 };
-// src/validation/index.ts
-var exports_validation = {};
-__export(exports_validation, {
-  parseOrThrow: () => parseOrThrow,
-  parseOrFail: () => parseOrFail,
-  iniValidationsAdvanced: () => iniValidationsAdvanced,
-  cuid2Regex: () => cuid2Regex
-});
-__reExport(exports_validation, typebox);
-__reExport(exports_validation, compiler);
-import"@sinclair/typebox";
-import"@sinclair/typebox/compiler";
-import { FormatRegistry } from "@sinclair/typebox";
 
 // src/validation/formats/index.ts
 var exports_formats = {};
@@ -345,33 +201,32 @@ function parseOrThrow(validator, value) {
   return result;
 }
 
-// src/index.ts
-__reExport(exports_src, exports_validation);
+// src/testing/testModel/index.ts
+var testModel = (tests) => {
+  for (const { testName, goodValues, badValues, check } of tests) {
+    for (const goodValue of goodValues) {
+      test(`${testName} - Check returns true for good value: ${JSON.stringify(goodValue)}`, () => {
+        expect(check.Check(goodValue)).toBe(true);
+      });
+      test(`${testName} - validateOrThrow does not throw for good value: ${JSON.stringify(goodValue)}`, () => {
+        const [error, value] = parseOrFail(check, goodValue);
+        expect(error).toBeUndefined();
+        expect(value).toEqual(goodValue);
+      });
+    }
+    for (const badValue of badValues) {
+      test(`${testName} - Check returns false for bad value: ${JSON.stringify(badValue)}`, () => {
+        expect(check.Check(badValue)).toBe(false);
+      });
+      test(`${testName} - validateOrThrow throws for bad value: ${JSON.stringify(badValue)}`, () => {
+        const [error, value] = parseOrFail(check, badValue);
+        expect(value).toBeUndefined();
+        expect(error).toBeInstanceOf(Error);
+      });
+    }
+  }
+};
 export {
-  useUnmount,
-  useMount,
-  useEvent,
-  useDidUpdateEffect,
-  tryOrFailSync,
-  tryOrFail,
-  sortItemsByPosition,
-  sleep,
-  parseOrThrow,
-  parseOrFail,
-  isValidId,
-  iniValidationsAdvanced,
-  getRange,
-  getPrevious,
-  getNext,
-  getLast,
-  getItemById,
-  getIndexByItem,
-  getFirst,
-  generatePositionsFirst,
-  generatePositionBetween,
-  generatePositionBefore,
-  generatePositionAfter,
-  cuid2Regex,
-  createUniqueId,
-  DateTime
+  testModel,
+  fake
 };
