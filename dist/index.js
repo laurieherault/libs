@@ -1614,18 +1614,38 @@ var useDidUpdateEffect = (callback, dependencies) => {
   }, dependencies);
 };
 
-// src/hooks/useMount/index.ts
+// src/hooks/useEvent/index.ts
 var import_react2 = __toESM(require_react(), 1);
-var useMount = (callback) => {
+function useEvent(eventName, handler, element = window) {
+  const savedHandler = import_react2.useRef(handler);
   import_react2.useEffect(() => {
+    savedHandler.current = handler;
+  }, [handler]);
+  import_react2.useEffect(() => {
+    if (!element?.addEventListener)
+      throw new Error("Element does not support addEventListener");
+    const eventListener = (event) => {
+      savedHandler.current(event);
+    };
+    element.addEventListener(eventName, eventListener);
+    return () => {
+      element.removeEventListener(eventName, eventListener);
+    };
+  }, [eventName, element]);
+}
+
+// src/hooks/useMount/index.ts
+var import_react3 = __toESM(require_react(), 1);
+var useMount = (callback) => {
+  import_react3.useEffect(() => {
     callback();
   }, []);
 };
 
 // src/hooks/useUnmount/index.ts
-var import_react3 = __toESM(require_react(), 1);
+var import_react4 = __toESM(require_react(), 1);
 var useUnmount = (callback) => {
-  import_react3.useEffect(() => {
+  import_react4.useEffect(() => {
     return () => {
       callback();
     };
@@ -9515,6 +9535,7 @@ function getIndexByItem(items, current) {
 export {
   useUnmount,
   useMount,
+  useEvent,
   useDidUpdateEffect,
   tryOrFailSync,
   tryOrFail,

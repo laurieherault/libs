@@ -13,6 +13,7 @@ import { DependencyList } from 'react';
  * @param dependencies - Tableau de dépendances à surveiller.
  */
 export declare const useDidUpdateEffect: (callback: () => void, dependencies: DependencyList) => void;
+export declare function useEvent<K extends keyof WindowEventMap>(eventName: K, handler: (event: WindowEventMap[K]) => void, element?: HTMLElement | Window): void;
 /**
  * Hook qui s'exécute une seule fois lors du montage du composant.
  * @param callback - Fonction à exécuter lors du montage.
