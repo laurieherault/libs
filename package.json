@@ -1,6 +1,6 @@
 {
 	"name": "@laurieherault/libs",
-	"version": "0.0.20",
+	"version": "0.0.21",
 	"main": "src/index.ts",
 	"type": "module",
 	"sideEffects": false,
@@ -8,7 +8,9 @@
 		".": "./src/index.ts",
 		"./test": "./src/test.ts"
 	},
-	"files": ["src"],
+	"files": [
+		"src"
+	],
 	"scripts": {
 		"test": "bun test",
 		"release": "release-it --ci"
