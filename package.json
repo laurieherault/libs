@@ -1,6 +1,6 @@
 {
 	"name": "@laurieherault/libs",
-	"version": "0.0.19",
+	"version": "0.0.20",
 	"main": "src/index.ts",
 	"type": "module",
 	"sideEffects": false,
@@ -18,7 +18,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@happy-dom/global-registrator": "^17.1.8",
+		"@happy-dom/global-registrator": "^17.2.2",
 		"@testing-library/dom": "^10.4.0",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.2.0",
@@ -34,7 +34,7 @@
 	"dependencies": {
 		"@dpaskhin/unique": "^1.0.0",
 		"@faker-js/faker": "^9.5.1",
-		"@loglayer/transport-consola": "^2.0.3",
+		"@loglayer/transport-consola": "^2.0.4",
 		"@paralleldrive/cuid2": "^2.2.2",
 		"@sinclair/typebox": "^0.34.28",
 		"@types/luxon": "^3.4.2",
@@ -42,7 +42,7 @@
 		"consola": "^3.4.0",
 		"fractional-indexing": "^3.2.0",
 		"ky": "^1.7.5",
-		"loglayer": "^6.2.0",
+		"loglayer": "^6.3.1",
 		"luxon": "^3.5.0",
 		"react": "^19.0.0"
 	}
