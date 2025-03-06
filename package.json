@@ -8,11 +8,8 @@
 		".": "./src/index.ts",
 		"./test": "./src/test.ts"
 	},
-	"files": [
-		"src"
-	],
+	"files": ["src"],
 	"scripts": {
-		"build": "bun build.ts",
 		"test": "bun test",
 		"release": "release-it --ci"
 	},
