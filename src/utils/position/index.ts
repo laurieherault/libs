@@ -32,7 +32,7 @@ export const generatePositionsFirst = (n: number): string[] => {
  * @param {number} n - Le nombre de clés à générer.
  * @returns {string[]} Un tableau de clés de position se situant après la clé fournie.
  */
-export const generatePositionAfter = (after: string, n: number): string[] => {
+export const generatePositionsAfter = (after: string, n: number): string[] => {
 	return generateNKeysBetween(after, null, n);
 };
 
@@ -61,7 +61,7 @@ export const generatePositionBefore = (before: string, n: number): string[] => {
  * @param {number} n - Le nombre de clés à générer entre `a` et `b`.
  * @returns {string[]} Un tableau de clés de position situées entre `a` et `b`.
  */
-export const generatePositionBetween = (
+export const generatePositionsBetween = (
 	a: string,
 	b: string,
 	n: number,

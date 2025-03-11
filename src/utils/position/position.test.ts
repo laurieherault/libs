@@ -1,8 +1,8 @@
 import { expect, test } from "bun:test";
 import {
-	generatePositionAfter,
 	generatePositionBefore,
-	generatePositionBetween,
+	generatePositionsAfter,
+	generatePositionsBetween,
 	generatePositionsFirst,
 	getFirst,
 	getIndexByItem,
@@ -33,7 +33,7 @@ test("generatePositionsFirst returns the correct number of keys", () => {
 test("generatePositionAfter returns keys greater than the provided key", () => {
 	// Génère une position de référence à l'aide de generatePositionsFirst
 	const after = generatePositionsFirst(1)[0];
-	const keys = generatePositionAfter(after, 3);
+	const keys = generatePositionsAfter(after, 3);
 	for (const key of keys) {
 		expect(key > after).toBe(true);
 	}
@@ -53,8 +53,8 @@ test("generatePositionBetween returns keys between given keys", () => {
 	const twoPositions = generatePositionsFirst(2);
 	const a = twoPositions[0];
 	// On génère une position juste après 'a' pour servir de borne supérieure
-	const b = generatePositionAfter(a, 1)[0];
-	const keys = generatePositionBetween(a, b, 5);
+	const b = generatePositionsAfter(a, 1)[0];
+	const keys = generatePositionsBetween(a, b, 5);
 	for (const key of keys) {
 		expect(key > a && key < b).toBe(true);
 	}
