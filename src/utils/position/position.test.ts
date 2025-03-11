@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
 import {
-	generatePositionBefore,
 	generatePositionsAfter,
+	generatePositionsBefore,
 	generatePositionsBetween,
 	generatePositionsFirst,
 	getFirst,
@@ -42,7 +42,7 @@ test("generatePositionAfter returns keys greater than the provided key", () => {
 test("generatePositionBefore returns keys less than the provided key", () => {
 	// Génère une position de référence à l'aide de generatePositionsFirst
 	const before = generatePositionsFirst(1)[0];
-	const keys = generatePositionBefore(before, 3);
+	const keys = generatePositionsBefore(before, 3);
 	for (const key of keys) {
 		expect(key < before).toBe(true);
 	}
