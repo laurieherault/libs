@@ -73,17 +73,27 @@ export const generatePositionsBetween = (
 };
 
 /**
+ * Compare deux éléments positionnés par leur propriété position.
+ * Peut être utilisé directement comme fonction de comparaison avec Array.sort().
+ *
+ * @param a - Premier élément à comparer
+ * @param b - Second élément à comparer
+ * @returns -1 si a est avant b, 1 si a est après b, 0 s'ils sont égaux
+ */
+export function comparePositions<T extends PositionedItem>(a: T, b: T): number {
+	if (a.position < b.position) return -1;
+	if (a.position > b.position) return 1;
+	return 0;
+}
+
+/**
  * Trie un tableau d'éléments en fonction d'une propriété spécifiée, ici associée à la position.
  *
  * @param items - Le tableau d'éléments à trier.
  * @returns Le tableau trié.
  */
 export function sortItemsByPosition<T extends PositionedItem>(items: T[]): T[] {
-	return items.sort((a, b) => {
-		if (a.position < b.position) return -1;
-		if (a.position > b.position) return 1;
-		return 0;
-	});
+	return items.sort(comparePositions);
 }
 
 /**
