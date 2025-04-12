@@ -19,6 +19,14 @@ describe("Tests pour shortenPath et getFileName", () => {
 			expect(shortened).toBe("/Users/.../Folder3");
 		});
 
+		// Test avec chemin court et withoutFileName=true
+		// Le chemin étant plus court que maxLength, on doit quand même supprimer le fichier
+		test("shortenPath (chemin court, sans file)", () => {
+			const shortMacPath = "/Users/toto/file.txt";
+			const shortened = shortenPath(shortMacPath, 100, true);
+			expect(shortened).toBe("/Users/toto");
+		});
+
 		test("getFileName", () => {
 			const fileName = getFileName(macPath);
 			expect(fileName).toBe("MyFile.PNG");
@@ -39,6 +47,14 @@ describe("Tests pour shortenPath et getFileName", () => {
 		test("shortenPath (sans file)", () => {
 			const shortened = shortenPath(windowsPath, 30, true);
 			expect(shortened).toBe("C:\\Users\\...\\Folder3");
+		});
+
+		// Test avec chemin court et withoutFileName=true
+		// Le chemin étant plus court que maxLength, on doit quand même supprimer le fichier
+		test("shortenPath (chemin court, sans file)", () => {
+			const shortWindowsPath = "C:\\Users\\toto\\file.txt";
+			const shortened = shortenPath(shortWindowsPath, 100, true);
+			expect(shortened).toBe("C:\\Users\\toto");
 		});
 
 		test("getFileName", () => {

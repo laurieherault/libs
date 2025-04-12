@@ -13,13 +13,7 @@ export function shortenPath(
 	maxLength: number,
 	withoutFileName?: boolean,
 ): string {
-	// Si le chemin ne dépasse pas maxLength, retourne le chemin original.
-	if (path.length <= maxLength) {
-		return path;
-	}
-
 	// Détection du séparateur utilisé dans le chemin.
-	// On considère que Windows utilise "\" et sinon "/".
 	const delimiter = path.includes("\\") ? "\\" : "/";
 
 	// Découpe du chemin en segments.
@@ -30,6 +24,19 @@ export function shortenPath(
 	if (parts[0] === "" && delimiter === "/") {
 		prefix = delimiter;
 		parts.shift();
+	}
+
+	// Si withoutFileName est true, on supprime le nom de fichier
+	if (withoutFileName && parts.length > 1) {
+		const pathWithoutFile = prefix + parts.slice(0, -1).join(delimiter);
+
+		// Si le chemin sans fichier ne dépasse pas maxLength, on le retourne directement
+		if (pathWithoutFile.length <= maxLength) {
+			return pathWithoutFile;
+		}
+	} else if (path.length <= maxLength) {
+		// Si le chemin complet ne dépasse pas maxLength et qu'on ne doit pas supprimer le fichier
+		return path;
 	}
 
 	// Construction du chemin raccourci en fonction du paramètre withoutFileName.
