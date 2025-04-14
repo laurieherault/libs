@@ -37,26 +37,36 @@ export function useDisclosure(
 	const [opened, setOpened] = useState(initialState);
 
 	const open = useCallback(() => {
-		if (!opened) {
-			setOpened(true);
-			callbacks?.onOpen?.();
-		}
-	}, [opened, callbacks]);
+		setOpened((prevOpened) => {
+			if (!prevOpened) {
+				callbacks?.onOpen?.();
+				return true;
+			}
+			return prevOpened;
+		});
+	}, [callbacks]);
 
 	const close = useCallback(() => {
-		if (opened) {
-			setOpened(false);
-			callbacks?.onClose?.();
-		}
-	}, [opened, callbacks]);
+		setOpened((prevOpened) => {
+			if (prevOpened) {
+				callbacks?.onClose?.();
+				return false;
+			}
+			return prevOpened;
+		});
+	}, [callbacks]);
 
 	const toggle = useCallback(() => {
-		if (opened) {
-			close();
-		} else {
-			open();
-		}
-	}, [opened, open, close]);
+		setOpened((prevOpened) => {
+			if (prevOpened) {
+				callbacks?.onClose?.();
+				return false;
+			} else {
+				callbacks?.onOpen?.();
+				return true;
+			}
+		});
+	}, [callbacks]);
 
 	const handlers: UseDisclosureHandlers = { open, close, toggle };
 
