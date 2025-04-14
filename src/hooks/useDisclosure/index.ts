@@ -61,10 +61,9 @@ export function useDisclosure(
 			if (prevOpened) {
 				callbacks?.onClose?.();
 				return false;
-			} else {
-				callbacks?.onOpen?.();
-				return true;
 			}
+			callbacks?.onOpen?.();
+			return true;
 		});
 	}, [callbacks]);
 

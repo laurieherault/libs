@@ -1,6 +1,6 @@
 {
 	"name": "@laurieherault/libs",
-	"version": "0.0.30",
+	"version": "0.0.31",
 	"main": "src/index.ts",
 	"type": "module",
 	"sideEffects": false,
@@ -24,9 +24,6 @@
 		"@types/bun": "latest",
 		"bun-plugin-dts": "^0.3.0",
 		"release-it": "^18.1.2"
-	},
-	"peerDependencies": {
-		"typescript": "^5.7.3"
 	},
 	"author": "Laurie Hérault",
 	"license": "MIT",
