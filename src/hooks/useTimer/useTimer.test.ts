@@ -51,4 +51,19 @@ describe("useTimer", () => {
 		expect(result.current.seconds).toBe(3);
 		expect(result.current.isRunning).toBe(false);
 	});
+
+	test("calls onComplete when timer finishes", async () => {
+		const { result } = renderHook(() => useTimer(2, 10));
+		let called = false;
+		act(() => {
+			result.current.onComplete(() => {
+				called = true;
+			});
+			result.current.start();
+		});
+		await act(async () => {
+			await new Promise((r) => setTimeout(r, 30));
+		});
+		expect(called).toBe(true);
+	});
 });

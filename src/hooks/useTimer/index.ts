@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useInterval } from "../useInterval";
 
 /**
@@ -25,6 +25,12 @@ export function useTimer(initialSeconds: number, intervalMs = 1000) {
 		setSeconds(initialSeconds);
 	}, [initialSeconds]);
 
+	// listeners for completion
+	const listenersRef = useRef<Array<() => void>>([]);
+	const onComplete = useCallback((cb: () => void) => {
+		listenersRef.current.push(cb);
+	}, []);
+
 	// Decrement the timer on each tick.
 	useInterval(
 		() => {
@@ -32,6 +38,8 @@ export function useTimer(initialSeconds: number, intervalMs = 1000) {
 				if (prev <= 1) {
 					// Stop at zero
 					setIsRunning(false);
+					// Notify completion listeners
+					listenersRef.current.forEach((cb) => cb());
 					return 0;
 				}
 				return prev - 1;
@@ -40,5 +48,5 @@ export function useTimer(initialSeconds: number, intervalMs = 1000) {
 		isRunning ? intervalMs : null,
 	);
 
-	return { seconds, isRunning, start, pause, reset };
+	return { seconds, isRunning, start, pause, reset, onComplete };
 }
