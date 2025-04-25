@@ -39,7 +39,9 @@ export function useTimer(initialSeconds: number, intervalMs = 1000) {
 					// Stop at zero
 					setIsRunning(false);
 					// Notify completion listeners
-					listenersRef.current.forEach((cb) => cb());
+					for (const cb of listenersRef.current) {
+						cb();
+					}
 					return 0;
 				}
 				return prev - 1;
